@@ -1,0 +1,57 @@
+Infrastructure as Cod3
+terraform lab v0.1rc
+20 Mar 2018
+Tags: terraform, kubernetes, gke
+
+Jonathan Pulsifer
+
+☁️ security at shopify.com
+
+@JonPulsifer
+
+* Terraform
+.image img/tf.svg _ 250
+.caption Write, Plan, and Create Infrastructure as Code
+
+*tl;dr*
+
+- written in go
+- stateful
+- repeatable
+- multiple plugins (providers)
+
+* terraform-provider-google
+
+.code tf/gke-simple.tf
+.caption Example GKE cluster using the [[https://www.terraform.io/docs/providers/google/r/container_cluster.html][Google Cloud Provider]]
+
+*tl;dr*
+
+- open source @ [[https://github.com/terraform-providers/terraform-provider-google]]
+- written in go (youdontsay.jpg)
+- actively being developed by googlers 👍
+- #terraform on [[https://gcp-slack.appspot.com/][GCP Slack]]
+
+* defaults are secure right?
+.code tf/gke-full.tf
+
+* Lab Design
+
+.code README.md /# fetch/,/hack$/
+
+*Today:*
+
+- familiarization with the lab repo and branches (`master` and `00-bootstrap`)
+- deploy a GKE cluster and supporting infrastructure from code!
+
+* Getting Started
+
+*gcloud*config:*
+
+- `gcloud`config`set`project`<projectname>`
+
+*explore*the*code:*
+
+- `git`clone`https://github.com/j0npulsifer/terraform-lab`
+- `git`checkout`00-bootstrap`
+- `cat`README.md`
