@@ -54,4 +54,5 @@ Jonathan Pulsifer
 
 - `git`clone`https://github.com/j0npulsifer/terraform-lab`
 - `git`checkout`00-bootstrap`
+- `.`hack/utils.sh`
 - `cat`README.md`
