@@ -53,6 +53,7 @@ Jonathan Pulsifer
 *explore*the*code:*
 
 - `git`clone`https://github.com/j0npulsifer/terraform-lab`
+- `cd terraform-lab`
 - `git`checkout`00-bootstrap`
 - `.`hack/utils.sh`
 - `cat`README.md`
