@@ -43,6 +43,10 @@ etcd-0               Healthy   {"health": "true"}
 
 1. From the `tf/` directory: `grep -R TODO .`
 1. Complete the `TODO` items using the [provider documentation][tf-provider-google]
+1. `terraform plan`
+1. `terraform apply`
+1. ...
+1. :moneybag:
 
 ## Step three (DEPLOY A WORKLOAD TO THE CLUSTER)
 

@@ -9,11 +9,8 @@ resource "google_service_account" "nodes" {
 # In this lab your GKE nodes will need to access GCR for their storage
 # so we give them roles/storage.objectViewer on the entire project because
 # reasons
-resource "google_project_iam_binding" "gcr-for-gke-nodes" {
+resource "google_project_iam_member" "gcr-for-gke-nodes" {
   project = "${var.gcp_config["project"]}"
   role    = "roles/storage.objectViewer"
-
-  members = [
-    "serviceAccount:${google_service_account.nodes.email}",
-  ]
+  member  = "serviceAccount:${google_service_account.nodes.email}"
 }
