@@ -1,0 +1,24 @@
+apiVersion: skaffold/v1alpha1
+kind: Config
+# skaffold watches your source code and the dependencies of your
+# docker images for changes and runs a build and deploy when
+# changes are detected
+build:
+  artifacts:
+  - imageName: "gcr.io/kubesec/webapp"
+    workspace: "../containers/webapp"
+  # we want GCR to build our container
+  # we can also choose local: {} over googleCloudBuild
+  # to use the Docker daemon on the host to build
+  googleCloudBuild:
+    # TODO: replace with your current project
+    projectId: ""
+deploy:
+  kubectl:
+    manifests:
+    # the paths to the manifests
+    - paths:
+      - k8s/*
+      parameters:
+        # this variable will be substituted with the gcr.io/image@sha256:abcdef
+        IMAGE_NAME: gcr.io/kubesec/webapp

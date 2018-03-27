@@ -10,7 +10,7 @@ Jonathan Pulsifer
 @JonPulsifer
 
 * Terraform
-.image img/tf.svg _ 250
+.image src/img/tf.svg _ 250
 .caption Write, Plan, and Create Infrastructure as Code
 
 *tl;dr*
@@ -33,11 +33,14 @@ Jonathan Pulsifer
 - #terraform on [[https://gcp-slack.appspot.com/][GCP Slack]]
 
 * defaults are secure right?
-.code tf/gke-full.tf
+.code src/tf/gke-full.tf
 
 * Lab Design
 
-.code README.md /# fetch/,/hack$/
+- Source the `hack/utils.sh` script by running `.`hack/utils.sh`
+- Folders in serial `00-bootstrap`, `01-secure-cluster` ...
+- Each folder has a `tf/` directory containing terraform configuration
+- Each folder contains a `README.md` with instructions for the lab
 
 *Today:*
 
@@ -53,7 +56,7 @@ Jonathan Pulsifer
 *explore*the*code:*
 
 - `git`clone`https://github.com/j0npulsifer/terraform-lab`
-- `cd terraform-lab`
-- `git`checkout`00-bootstrap`
+- `cd`terraform-lab`
 - `.`hack/utils.sh`
+- `cd`00-bootstrap/`
 - `cat`README.md`

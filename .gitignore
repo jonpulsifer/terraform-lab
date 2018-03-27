@@ -1,2 +1,4 @@
 .terraform
 service-account.json
+terraform
+skaffold
