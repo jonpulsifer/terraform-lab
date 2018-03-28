@@ -51,7 +51,7 @@ etcd-0               Healthy   {"health": "true"}
 ## Step three (DEPLOY A WORKLOAD TO THE CLUSTER)
 
 1. `cd ../`
-1. `replace-email your.email@domain.com`
+1. `replace-email <your.email@domain.com>`
 1. `skaffold dev`
 1. open a new tab
 1. `cd terraform-lab/containers/webapp`
