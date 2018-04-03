@@ -52,7 +52,7 @@ etcd-0               Healthy   {"health": "true"}
 At this point you should have two pods 
 ## Look at yer thing!
 
-1. `kubectl get po`
+1. `kubectl get pods`
 1. `kubectl port-forward webapp-12345 8080:8080`
 1. Open a browser and navigate to [http://localhost:8080](http://localhost:8080)
 1. Check the logs of your thing `kubectl logs deploy/webapp`
@@ -62,10 +62,10 @@ At this point you should have two pods
 ## Try to deploy a new workload
 
 1. Create a default alpine deployment
-1. `kubectl run myworkload --image=alpine -- tail -f /dev/null`
+    - `kubectl run myworkload --image=alpine -- tail -f /dev/null`
 1. Did it start?
-1. `kubectl get rs`
-1. `kubectl describe rs myworkload-12345`
+1. `kubectl get pods`
+1. `kubectl describe po myworkload-12345`
 
 ## Allow some dangerous containers
 
