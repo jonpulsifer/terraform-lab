@@ -1,0 +1,31 @@
+Secure Workloads
+terraform lab v0.1rc
+3 Apr 2018
+Tags: terraform, kubernetes, gke
+
+Jonathan Pulsifer
+
+☁️ security at shopify.com
+
+@JonPulsifer
+
+* The Cluster
+.code tf/kubernetes.tf /ABAC/,/false/
+.code tf/kubernetes.tf /NetworkPolicy/,/}/
+.code tf/kubernetes.tf /PodSecurityPolicy/,/}/
+.caption RBAC, NetworkPolicy, and PodSecurityPolicy Enabled
+
+*Objective*
+
+- Explore the admission of a workload into a secure GKE cluster
+
+* Admission Control
+
+*tl;dr*kubernetes*admission*control*
+
+This is the flow that K8s takes to admit a workload into a cluster
+
+    [ Authentication ]   ->   [ Authorization ]    ->    [ Admission Control ]   ->   ALLOW!
+           WHO                      WHAT                          psp             
+         are you?             do you want to do?           does your workload
+                                                         align with our policy?
