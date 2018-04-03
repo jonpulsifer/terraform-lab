@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: tflab-restricted
+  labels:
+    pulsifer.ca/99-problems: but-root-aint-one
+  annotations:
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default'
+    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
+    seccomp.security.alpha.kubernetes.io/defaultProfileName:  'docker/default'
+    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  defaultAllowPrivilegeEscalation: false
+  # drop some nasty caps that are turned on by default
+  requiredDropCapabilities:
+  - "*"
+  # Allow core volume types.
+  volumes:
+  - 'configMap'
+  - 'emptyDir'
+  - 'projected'
+  - 'secret'
+  - 'downwardAPI'
+  # Assume that persistentVolumes set up by the cluster admin are safe to use.
+  - 'persistentVolumeClaim'
+  # disallow host namespaces
+  hostNetwork: false
+  hostIPC: false
+  hostPID: false
+  # pin users and groups > {u,g}id 0
+  runAsUser:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  seLinux:
+    # This policy assumes the nodes are using AppArmor rather than SELinux.
+    rule: 'RunAsAny'
+  # allow adding other groups
+  supplementalGroups:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  fsGroup:
+    rule: 'MustRunAs'
+    ranges:
+      - min: 1
+        max: 65535
+  readOnlyRootFilesystem: true

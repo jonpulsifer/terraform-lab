@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tflab-psp-cluster-defaults
+rules:
+  - apiGroups: ['extensions']
+    resources: ['podsecuritypolicies']
+    verbs:     ['use']
+    resourceNames:
+    - tflab-restricted
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tflab-namespace-psp
+  namespace: tflab
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: psp-cluster-defaults
+subjects:
+  - kind: Group
+    name: system:authenticated
+    namespace: tflab
