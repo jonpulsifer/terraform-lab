@@ -27,8 +27,8 @@ Ensure you have the `roles/owner` permission on the GCP project you are using fo
 
 ## Obtain credentials for your cluster :key:
 1. In order to interact with your newly created GKE cluster, you must obtain credentials to communicate with the Kubernetes master. Run the following command to configure your `~/.kube/config` file such that you can interact with your cluster using `kubectl`
-
-```gcloud container clusters get-credentials <cluster-name> --zone=<yourmasterzone>```
+1. `gcloud container clusters get-credentials <cluster-name> --zone=<yourmasterzone>`
+1. `kubectl config set-context $(kubectl config current-context) --namespace=tflab`
 
 ```sh
 $ kubectl get cs
@@ -42,7 +42,7 @@ etcd-0               Healthy   {"health": "true"}
 ## Do the k8s
 1. `kubectl apply -f k8s/cluster-admin.yaml`
 1. `kubectl apply -f k8s/psp`
-1. `kubectl apply -f k8s/namespaces/webapp`
+1. `kubectl apply -f k8s/namespaces/tflab`
 
 ## Look at yer thing!
 1. `kubectl port-forward webapp-12345 8080:8080`
