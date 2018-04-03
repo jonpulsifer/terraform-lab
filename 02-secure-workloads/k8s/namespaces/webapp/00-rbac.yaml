@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: webapp
+  namespace: tflab
+automountServiceAccountToken: false
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: webapp
+  namespace: tflab
+rules:
+  - apiGroups: ['extensions']
+    resources: ['podsecuritypolicies']
+    verbs:     ['use']
+    resourceNames:
+    - webapp
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: webapp
+  namespace: tflab
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: webapp
+subjects:
+  - kind: ServiceAccount
+    name: webapp
+    namespace: tflab
