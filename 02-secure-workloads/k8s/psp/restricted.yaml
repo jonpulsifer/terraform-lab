@@ -15,7 +15,7 @@ spec:
   defaultAllowPrivilegeEscalation: false
   # drop some nasty caps that are turned on by default
   requiredDropCapabilities:
-  - "*"
+  - 'ALL'
   # Allow core volume types.
   volumes:
   - 'configMap'
@@ -31,10 +31,7 @@ spec:
   hostPID: false
   # pin users and groups > {u,g}id 0
   runAsUser:
-    rule: 'MustRunAs'
-    ranges:
-      - min: 1
-        max: 65535
+    rule: 'MustRunAsNonRoot'
   seLinux:
     # This policy assumes the nodes are using AppArmor rather than SELinux.
     rule: 'RunAsAny'

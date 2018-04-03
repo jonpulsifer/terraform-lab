@@ -39,7 +39,7 @@ resource "google_container_cluster" "lab" {
   }
 
   # enable NetworkPolicy
-  network_policy_config {
+  network_policy {
     enabled  = "true"
     provider = "CALICO"
   }

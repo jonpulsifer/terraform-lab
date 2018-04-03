@@ -15,7 +15,7 @@ rules:
     resources: ['podsecuritypolicies']
     verbs:     ['use']
     resourceNames:
-    - webapp
+    - tflab-webapp
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -27,9 +27,9 @@ roleRef:
   kind: Role
   name: webapp
 subjects:
-  - kind: ServiceAccount
-    name: webapp
-    namespace: tflab
+- kind: ServiceAccount
+  name: webapp
+  namespace: tflab
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -39,8 +39,8 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp-cluster-defaults
+  name: tflab-psp-cluster-defaults
 subjects:
-  - kind: Group
-    name: system:authenticated
-    namespace: tflab
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:serviceaccounts

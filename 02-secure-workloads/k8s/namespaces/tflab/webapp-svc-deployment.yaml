@@ -1,5 +1,20 @@
-kind: Deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp
+  namespace: tflab
+  labels:
+    app: webapp
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8080
+  selector:
+    app: webapp
+
+---
 apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: webapp
   labels:
