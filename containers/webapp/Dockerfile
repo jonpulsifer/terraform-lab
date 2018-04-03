@@ -5,7 +5,7 @@ ENV CGO_ENABLED=0 \
     GOARCH=amd64 \
     GOOS=linux
 WORKDIR /go/src/tflab/webapp
-COPY main.go .
+COPY . .
 RUN go install -a \
       --ldflags \
       -extldflags="-static" \
@@ -18,6 +18,7 @@ RUN go install -a \
 # discards the (build) container above
 FROM scratch
 COPY --from=builder /go/bin/webapp /webapp
-# nobody
-USER 65534
+
+# nobody:nobody
+USER 65534:65534
 ENTRYPOINT ["/webapp"]
