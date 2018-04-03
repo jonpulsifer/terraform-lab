@@ -52,6 +52,7 @@ etcd-0               Healthy   {"health": "true"}
 At this point you should have two pods 
 ## Look at yer thing!
 
+1. `kubectl get po`
 1. `kubectl port-forward webapp-12345 8080:8080`
 1. Open a browser and navigate to [http://localhost:8080](http://localhost:8080)
 1. Check the logs of your thing `kubectl logs deploy/webapp`
