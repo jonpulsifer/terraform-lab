@@ -39,9 +39,16 @@ etcd-1               Healthy   {"health": "true"}
 etcd-0               Healthy   {"health": "true"}
 ```
 
-## Give yourself cluster admin :godmode:
+## Do the k8s
+1. `kubectl apply -f k8s/cluster-admin.yaml`
+1. `kubectl apply -f k8s/psp`
+1. `kubectl apply -f k8s/namespaces/webapp`
 
-1. Run the `tflab-gimme-admin` command
+## Look at yer thing!
+1. `kubectl port-forward webapp-12345 8080:8080`
+1. Open a browser and navigate to [http://localhost:8080](http://localhost:8080)
+1. Check the logs of your thing `kubectl logs deploy/webapp`
+1. Observe the PSP the workload is using `kubectl get po webapp-12345 -o yaml | grep psp`
 
 ## Destroy your cluster :fire:
 
