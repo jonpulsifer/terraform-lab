@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # gives cluster-admin on GKE clusters if auth'd
 gimme-admin() {
