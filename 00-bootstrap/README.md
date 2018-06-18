@@ -5,6 +5,7 @@
 :cloud: :rocket: Have fun!
 
 ### Updating Terraform
+
 1. Determine terraform version with `terraform version`
 1. Update terraform if necessary
     - `. hack/utils.sh && download-terraform 0.11.5 && sudo mv -v terraform /usr/local/bin/`
@@ -14,6 +15,7 @@
 Ensure you have the `roles/owner` permission on the GCP project you are running this on
 
 ## Instructions
+
 1. `cd tf`
 1. Look through each of the files carefully, reading the comments and understanding what's happening
     1. `backend.tf`

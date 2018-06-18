@@ -5,6 +5,7 @@
 :cloud: :rocket: Have fun!
 
 ### Updating/Install Terraform and Skaffold
+
 1. Determine terraform version with `terraform version`
 1. Update `terraform` if necessary
     - `. ../hack/utils.sh && download-terraform 0.11.5 && sudo mv -v terraform /usr/local/bin/`
@@ -14,6 +15,7 @@
 Ensure you have the `roles/owner` permission on the GCP project you are using for this lab
 
 ## Setup
+
 1. Look through each of the files in the `tf/` folder carefully
     1. READ THE COMMENTS :)
     1. `backend.tf`
