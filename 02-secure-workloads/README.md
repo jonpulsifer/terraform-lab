@@ -49,7 +49,8 @@ etcd-0               Healthy   {"health": "true"}
 1. `kubectl apply -f k8s/psp`
 1. `kubectl apply -f k8s/namespaces/tflab`
 
-At this point you should have two pods 
+At this point you should have two pods
+
 ## Look at yer thing!
 
 1. `kubectl get pods`
