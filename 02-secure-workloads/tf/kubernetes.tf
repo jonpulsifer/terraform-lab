@@ -5,6 +5,7 @@ data "google_container_engine_versions" "lab" {
 
 # create and configure a GKE cluster
 resource "google_container_cluster" "lab" {
+  provider = "google-beta"
   # GKE requires a network, subnet, and service account
   depends_on = [
     "google_service_account.nodes",

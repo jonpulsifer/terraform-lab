@@ -15,3 +15,9 @@ provider "google" {
   region  = var.gcp_config["region"]
   version = "~> 2.20"
 }
+
+provider "google-beta" {
+  project = var.gcp_config["project"]
+  region  = var.gcp_config["region"]
+  version = "~> 2.20"
+}

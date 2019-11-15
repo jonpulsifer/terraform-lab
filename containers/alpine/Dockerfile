@@ -1,14 +1,15 @@
 # jonpulsifer/tflab:alpine
 FROM alpine:latest
-ARG USER=tflab
-RUN addgroup -g 1000 -S ${USER} && \
-    adduser  -u 1000 -S ${USER} -G ${USER}
+ARG USER=${USER:-tflab}
+ARG UID=${UID:-1337}
 
-RUN apk --no-cache update \
- && apk --no-cache upgrade \
+RUN addgroup -g ${UID} -S ${USER} \
+ && adduser  -u ${UID} -S ${USER} -G ${USER}
+
+RUN apk --no-cache upgrade \
  && apk add sudo
 
 RUN echo "${USER}    ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 WORKDIR /home/${USER}
-USER 1000:1000
+USER ${UID}:${UID}
