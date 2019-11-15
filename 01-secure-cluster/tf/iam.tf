@@ -10,7 +10,7 @@ resource "google_service_account" "nodes" {
 # so we give them roles/storage.objectViewer on the entire project because
 # reasons
 resource "google_project_iam_member" "gcr-for-gke-nodes" {
-  project = "${var.gcp_config["project"]}"
+  project = var.gcp_config["project"]
   role    = "roles/storage.objectViewer"
   member  = "serviceAccount:${google_service_account.nodes.email}"
 }

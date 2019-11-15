@@ -12,10 +12,9 @@ Increased operational confidence with versioning IaaS provisioned infrastructure
     - [Google Cloud SDK][gcloud-sdk]
     - A billable (or trial) project
 1. [`kubectl`][kubectl-download]
-    - `brew install kubernetes-cli` or `gcloud components install kubectl`
+    - `gcloud components install kubectl`
 1. [`terraform`][tf-download]
     - `brew install terraform`
-    - `. hack/utils.sh && download-terraform 0.11.5 && sudo cp -v terraform /usr/local/bin`
 
 ## Slides
 

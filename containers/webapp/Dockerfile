@@ -1,19 +1,18 @@
 # jonpulsifer/webapp:tflab
 # Multi-stage Dockerfile
 # This first container will build our static golang binary named webapp
-FROM golang:1.10-alpine AS builder
+FROM golang:1.13-alpine AS builder
 ENV CGO_ENABLED=0 \
     GOARCH=amd64 \
     GOOS=linux
-WORKDIR /go/src/tflab/webapp
+WORKDIR /go/src/github.com/jonpulsifer/terraform-lab/containers/webapp
 COPY . .
 RUN go install -a \
       --ldflags \
       -extldflags="-static" \
       -installsuffix=netgo \
       -tags=netgo \
-      tflab/webapp
-
+      .
 # In the second stage, we copy the static binary out of
 # the builder and into our new "scratch" container which
 # discards the (build) container above

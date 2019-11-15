@@ -1,4 +1,4 @@
-# jonpulsifer/alpine:tflab
+# jonpulsifer/tflab:alpine
 FROM alpine:latest
 ARG USER=tflab
 RUN addgroup -g 1000 -S ${USER} && \

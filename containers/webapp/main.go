@@ -70,8 +70,8 @@ func main() {
 		for {
 			t := time.Now()
 			fmt.Println(t.Format("2006-01-02 15:04:05"), msg)
-			time.Sleep(30 * time.Second)
+			time.Sleep(10 * time.Second)
 		}
-	}("heartbeat - ohi there :)")
+	}("heartbeat")
 	log.Fatal(srv.ListenAndServe())
 }

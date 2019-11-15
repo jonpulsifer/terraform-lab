@@ -22,7 +22,7 @@ Jonathan Pulsifer
 
 * terraform-provider-google
 
-.code tf/gke-simple.tf
+.code src/tf/gke-simple.tf
 .caption Example GKE cluster using the [[https://www.terraform.io/docs/providers/google/r/container_cluster.html][Google Cloud Provider]]
 
 *tl;dr*
@@ -37,7 +37,6 @@ Jonathan Pulsifer
 
 * Lab Design
 
-- Source the `hack/utils.sh` script by running `.`hack/utils.sh`
 - Folders in serial `00-bootstrap`, `01-secure-cluster` ...
 - Each folder has a `tf/` directory containing terraform configuration
 - Each folder contains a `README.md` with instructions for the lab
@@ -55,8 +54,7 @@ Jonathan Pulsifer
 
 *explore*the*code:*
 
-- `git`clone`https://github.com/j0npulsifer/terraform-lab`
+- `git`clone`https://github.com/jonpulsifer/terraform-lab`
 - `cd`terraform-lab`
-- `.`hack/utils.sh`
 - `cd`00-bootstrap/`
 - `cat`README.md`

@@ -11,7 +11,7 @@
 
 # Google Cloud Platform provider configuration
 provider "google" {
-  project = "${var.gcp_config["project"]}"
-  region  = "${var.gcp_config["region"]}"
-  version = "~> 1.14"
+  project = var.gcp_config["project"]
+  region  = var.gcp_config["region"]
+  version = "~> 2.20"
 }

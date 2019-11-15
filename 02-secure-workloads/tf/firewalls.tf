@@ -6,7 +6,7 @@ resource "google_compute_firewall" "gke-ssh" {
   ]
 
   name    = "tflab-${var.gcp_config["name"]}-ssh"
-  network = "${google_compute_network.gke.name}"
+  network = google_compute_network.gke.name
 
   allow {
     protocol = "tcp"
@@ -14,7 +14,7 @@ resource "google_compute_firewall" "gke-ssh" {
   }
 
   source_ranges           = ["0.0.0.0/0"]
-  target_service_accounts = ["${google_service_account.nodes.email}"]
+  target_service_accounts = [google_service_account.nodes.email]
 }
 
 # allow ICMP to your nodes
@@ -25,12 +25,12 @@ resource "google_compute_firewall" "icmp" {
   ]
 
   name    = "tflab-${var.gcp_config["name"]}-icmp"
-  network = "${google_compute_network.gke.name}"
+  network = google_compute_network.gke.name
 
   allow {
     protocol = "icmp"
   }
 
   source_ranges           = ["0.0.0.0/0"]
-  target_service_accounts = ["${google_service_account.nodes.email}"]
+  target_service_accounts = [google_service_account.nodes.email]
 }

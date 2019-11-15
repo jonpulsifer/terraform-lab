@@ -8,7 +8,6 @@
 
 1. Determine terraform version with `terraform version`
 1. Update `terraform` if necessary
-    - `. ../hack/utils.sh && download-terraform 0.11.5 && sudo mv -v terraform /usr/local/bin/`
 
 ### Permissions
 

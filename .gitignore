@@ -1,4 +1,7 @@
 .terraform
 service-account.json
+credentials.json
 terraform
 skaffold
+*.tfstate
+*.tfstate*
