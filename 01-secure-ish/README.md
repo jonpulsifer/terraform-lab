@@ -1,4 +1,4 @@
-# 02-secure-workloads
+# 01-secure-ish
 
 ## Prerequisites
 
