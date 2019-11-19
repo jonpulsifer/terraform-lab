@@ -1,6 +1,6 @@
 Infrastructure as Cod3
-terraform lab v0.1rc
-20 Mar 2018
+terraform lab v0.3rc
+18 Nov 2019
 Tags: terraform, kubernetes, gke
 
 Jonathan Pulsifer
@@ -10,7 +10,7 @@ Jonathan Pulsifer
 @JonPulsifer
 
 * Terraform
-.image src/img/tf.svg _ 250
+.image src/slides/img/tf.svg _ 250
 .caption Write, Plan, and Create Infrastructure as Code
 
 *tl;dr*
@@ -22,7 +22,7 @@ Jonathan Pulsifer
 
 * terraform-provider-google
 
-.code src/tf/gke-simple.tf
+.code src/slides/gke-simple.tf
 .caption Example GKE cluster using the [[https://www.terraform.io/docs/providers/google/r/container_cluster.html][Google Cloud Provider]]
 
 *tl;dr*
@@ -33,23 +33,32 @@ Jonathan Pulsifer
 - #terraform on [[https://gcp-slack.appspot.com/][GCP Slack]]
 
 * defaults are secure right?
-.code src/tf/gke-full.tf
+.code src/slides/gke-full.tf
 
-* Lab Design
+* Repo Folder Structure
+- `README.md` with instructions for the lab
+- A `tf/` directory containing terraform configuration
 
-- Folders in serial `00-bootstrap`, `01-secure-cluster` ...
-- Each folder has a `tf/` directory containing terraform configuration
-- Each folder contains a `README.md` with instructions for the lab
+  00-bootstrap
+  ├── README.md
+  └── tf
+  
+  01-secure-ish
+  ├── README.md
+  ├── k8s
+  ├── secure-workloads.slide
+  └── tf
 
 *Today:*
 
-- familiarization with the lab repo and branches (`master` and `00-bootstrap`)
+- familiarization with the terraform-lab repoistory and tools
 - deploy a GKE cluster and supporting infrastructure from code!
 
 * Getting Started
 
 *gcloud*config:*
 
+- `gcloud`auth`login`
 - `gcloud`config`set`project`<projectname>`
 
 *explore*the*code:*

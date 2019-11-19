@@ -11,7 +11,20 @@
 
 # Google Cloud Platform provider configuration
 provider "google" {
-  project = var.gcp_config["project"]
-  region  = var.gcp_config["region"]
-  version = "~> 2.20"
+  project = local.project
+  region  = local.region
+}
+
+provider "google-beta" {
+  project = local.project
+  region  = local.region
+}
+
+terraform {
+  backend "local" {}
+  required_providers {
+    google      = "~> 2.20"
+    google-beta = "~> 2.20"
+  }
+  required_version = "~> 0.12"
 }

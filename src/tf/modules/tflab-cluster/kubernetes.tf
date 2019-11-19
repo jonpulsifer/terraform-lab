@@ -1,75 +1,92 @@
 # fetch the latest GKE versions for the zone
 data "google_container_engine_versions" "lab" {
-  location = var.gcp_config["zone"]
+  location = var.zone
 }
 
 # create and configure a GKE cluster
 resource "google_container_cluster" "lab" {
-  provider = "google-beta"
+  provider = google-beta
   # GKE requires a network, subnet, and service account
   depends_on = [
-    "google_service_account.nodes",
-    "google_compute_network.gke",
-    "google_compute_subnetwork.nodes",
+    google_service_account.nodes,
+    google_compute_network.gke,
+    google_compute_subnetwork.nodes,
   ]
 
   # GKE Cluster name
-  name = "tflab-${var.gcp_config["name"]}"
+  name = "tflab-${var.name}"
 
   # Human readable description of this cluster
-  description = "tflab - ${var.gcp_config["name"]}'s cluster"
+  description = "tflab - ${var.name}'s cluster"
 
   # The zone where the master will be hosted
-  location = var.gcp_config["zone"]
+  location = var.zone
 
   # Use the latest GKE release for the master and worker nodes
   min_master_version = data.google_container_engine_versions.lab.latest_node_version
   node_version       = data.google_container_engine_versions.lab.latest_node_version
 
-  # inherit the network from terraform
+  # use the networks we create
   network    = google_compute_network.gke.self_link
   subnetwork = google_compute_subnetwork.nodes.name
+
+  # Prefer use IAM and RBAC for auth
+  master_auth {
+    # disable basic authentication
+    username = ""
+    password = ""
+
+    # disable client certificate generation
+    client_certificate_config {
+      issue_client_certificate = false
+    }
+  }
 
   # disable the ABAC authorizer
   enable_legacy_abac = "false"
 
-  # disable basic authentication
-  master_auth {
-    username = ""
-    password = ""
-  }
-
   # enable NetworkPolicy
   network_policy {
-    enabled  = "true"
-    provider = "CALICO"
+    enabled  = var.enable_network_policy
+    provider = var.enable_network_policy ? "CALICO" : "PROVIDER_UNSPECIFIED"
   }
 
   # enable PodSecurityPolicy
   pod_security_policy_config {
-    enabled = "true"
+    enabled = var.enable_pod_security_policy
   }
 
-  # disable the Kubernetes dashboard
+  # enable shielded Vms
+  enable_shielded_nodes = var.enable_shielded_nodes
+
+  # disable the l7 gclb controller
   addons_config {
     http_load_balancing {
       disabled = true
+    }
+
+    network_policy_config {
+      disabled = var.enable_network_policy ? false : true
     }
   }
 
   # GKE requires a node pool to be created on creation
   # how many do you want?
-  initial_node_count = var.gke_config["initial_node_count"]
+  initial_node_count = var.initial_node_count
 
   # configure the GCE instances
   node_config {
-    disk_size_gb    = var.gke_config["disk_size_gb"]
-    machine_type    = var.gke_config["machine_type"]
+    machine_type    = var.machine_type
     service_account = google_service_account.nodes.email
 
     # enable the Metadata Concealment workload proxy
     workload_metadata_config {
       node_metadata = "SECURE"
+    }
+
+    shielded_instance_config {
+      enable_secure_boot          = var.enable_shielded_nodes
+      enable_integrity_monitoring = var.enable_shielded_nodes
     }
 
     oauth_scopes = [

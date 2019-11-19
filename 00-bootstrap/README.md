@@ -17,10 +17,9 @@ Ensure you have the `roles/owner` permission on the GCP project you are running 
 
 1. `cd tf`
 1. Look through each of the files carefully, reading the comments and understanding what's happening
-    1. `backend.tf`
     1. `provider.tf`
     1. `therestofthem.tf`
-1. Edit `variables.tf` and `backend.tf` and fill in the blanks
+1. Edit `variables.tf` and fill in the blanks
 1. `terraform init`
 1. `terraform plan`
 1. `terraform apply`

@@ -1,6 +1,6 @@
 Secure Workloads
-terraform lab v0.1rc
-3 Apr 2018
+terraform lab v0.3rc
+18 Nov 2019
 Tags: terraform, kubernetes, gke
 
 Jonathan Pulsifer
@@ -25,7 +25,7 @@ Jonathan Pulsifer
 
 This is the flow that K8s takes to admit a workload into a cluster
 
-    [ Authentication ]   ->   [ Authorization ]    ->    [ Admission Control ]   ->   ALLOW!
-           WHO                      WHAT                          psp             
+    [ Authentication ]   ->   [ Authorization ]    ->    [ Admission Control ]   ->   ALLOW/DENY
+           WHO                      WHAT                          psp
          are you?             do you want to do?           does your workload
                                                          align with our policy?
