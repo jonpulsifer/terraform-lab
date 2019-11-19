@@ -46,7 +46,7 @@ spec:
     spec:
       containers:
         - name: sudo
-          image: jonpulsifer/alpine:tflab
+          image: jonpulsifer/tflab:sudo
           command: ["tail", "-f", "/dev/null"]
           securityContext:
             allowPrivilegeEscalation: false

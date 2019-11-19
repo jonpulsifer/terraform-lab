@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alpine
+  name: sudo
   labels:
-    app: alpine
+    app: sudo
   namespace: tflab
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: alpine
+      app: sudo
   template:
     metadata:
       labels:
-        app: alpine
+        app: sudo
     spec:
       containers:
-      - image: jonpulsifer/alpine:tflab
-        command: ["tail", "-f", "/dev/null"]
-        name: alpine
+        - image: jonpulsifer/tflab:sudo
+          command: ["tail", "-f", "/dev/null"]
+          name: sudo

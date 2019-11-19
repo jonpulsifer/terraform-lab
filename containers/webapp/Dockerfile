@@ -1,4 +1,4 @@
-# jonpulsifer/webapp:tflab
+# jonpulsifer/tflab:webapp
 # Multi-stage Dockerfile
 # This first container will build our static golang binary named webapp
 FROM golang:1.13-alpine AS builder

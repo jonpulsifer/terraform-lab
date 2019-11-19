@@ -21,7 +21,7 @@ Ensure you have the `roles/owner` permission on the GCP project you are using fo
 
 ## Create your GKE cluster :package: :cloud:
 
-1. Replace variables in `backend.tf` and `variables.tf`
+1. Replace local variables in `lab.tf`
 1. `terraform init`
 1. `terraform plan`
 1. `terraform apply`

@@ -1,6 +1,6 @@
 REPO := jonpulsifer
-IMAGE := webapp
-TAG := tflab
+IMAGE := tflab
+TAG := webapp
 FULL_IMAGE:=$(REPO)/$(IMAGE):$(TAG)
 
 .PHONY: all

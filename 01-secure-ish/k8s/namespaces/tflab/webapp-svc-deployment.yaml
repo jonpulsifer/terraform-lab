@@ -32,7 +32,7 @@ spec:
     spec:
       serviceAccountName: webapp
       containers:
-      - image: jonpulsifer/webapp:tflab
+      - image: jonpulsifer/tflab:webapp
         name: webapp
         readinessProbe:
           tcpSocket:
